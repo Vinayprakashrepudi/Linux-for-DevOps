@@ -1,6 +1,24 @@
 I have follwed in youtube like to install docker desktop:
+
  First I install WSL in local PC by 
 https://www.youtube.com/watch?v=eId6K8d0v6o
+
 Then installed docker by
 https://www.youtube.com/watch?v=bw-bMhlhcpg
+
+Then i try to create a docker container, before that, I created a C:/ubuntu-data
+ docker run -dit \
+  --name ubuntu-container \
+  --hostname ubuntu-dev \
+  --restart unless-stopped \
+  --cpus="2" \
+  --memory="4g" \
+  --mount type=bind,source=C:/ubuntu-data,target=/data \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -p 2222:22 \
+  -p 8080:80 \
+  --env TZ=Asia/Kolkata \
+  --env LANG=en_US.UTF-8 \
+  ubuntu:latest /bin/bash
+ 
 
